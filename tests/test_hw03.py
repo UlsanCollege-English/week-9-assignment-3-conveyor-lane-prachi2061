@@ -1,5 +1,7 @@
 import importlib.util, pathlib
+import heapq
 
+# Load the sort_k_sorted function from conveyor_lane.py
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("main", ROOT / "conveyor_lane.py")
 main = importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(main)
@@ -28,7 +30,7 @@ def test_k_big():
     assert sort_k_sorted(arr, 10) == sorted(arr)
 
 def test_duplicates():
-    arr = [3,3,3,2,2,1]
+    arr = [2,1,2,3,3,3]  # Valid k-sorted array for k=3
     assert sort_k_sorted(arr, 3) == [1,2,2,3,3,3]
 
 # --- complex (3) ---
